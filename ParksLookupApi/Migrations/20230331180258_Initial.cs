@@ -18,9 +18,9 @@ namespace ParksLookupApi.Migrations
                 {
                     ParkId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ParkName = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
+                    ParkName = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Type = table.Column<string>(type: "longtext", nullable: false)
+                    Type = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -34,11 +34,11 @@ namespace ParksLookupApi.Migrations
                 columns: new[] { "ParkId", "ParkName", "Type" },
                 values: new object[,]
                 {
-                    { 1, "Olympic National Park", "Natioinal" },
-                    { 2, "North Cascades National Park", "Natioinal" },
+                    { 1, "Olympic National Park", "National" },
+                    { 2, "North Cascades National Park", "National" },
                     { 3, "Tiger Mountain State Forest", "State" },
                     { 4, "Mike Roess Gold Head Branch State Park", "State" },
-                    { 5, "Everglades National Park", "Natioinal" }
+                    { 5, "Everglades National Park", "National" }
                 });
         }
 

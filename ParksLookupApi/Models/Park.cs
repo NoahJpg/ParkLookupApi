@@ -7,12 +7,16 @@ namespace ParksLookupApi.Models
     public int ParkId { get; set; }
 
     [Required]
-    [StringLength(20)]
+    [MaxLength(255)]
     public string ParkName { get; set; }
 
     [Required]
+    [MaxLength(50)]
     [StateOrNational(ErrorMessage = "Type must be 'State' or 'National'")]
       public string Type { get; set; }
+
+    [Required]
+    public string State { get; set; }
   }
 
   //custom validation for Type to be 'State' or 'National' only

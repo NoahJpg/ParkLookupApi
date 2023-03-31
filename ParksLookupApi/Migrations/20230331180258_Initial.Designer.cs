@@ -10,7 +10,7 @@ using ParksLookupApi.Models;
 namespace ParksLookupApi.Migrations
 {
     [DbContext(typeof(ParksLookupApiContext))]
-    [Migration("20230331173544_Initial")]
+    [Migration("20230331180258_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,12 +28,13 @@ namespace ParksLookupApi.Migrations
 
                     b.Property<string>("ParkName")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Type")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.HasKey("ParkId");
 
@@ -44,13 +45,13 @@ namespace ParksLookupApi.Migrations
                         {
                             ParkId = 1,
                             ParkName = "Olympic National Park",
-                            Type = "Natioinal"
+                            Type = "National"
                         },
                         new
                         {
                             ParkId = 2,
                             ParkName = "North Cascades National Park",
-                            Type = "Natioinal"
+                            Type = "National"
                         },
                         new
                         {
@@ -68,7 +69,7 @@ namespace ParksLookupApi.Migrations
                         {
                             ParkId = 5,
                             ParkName = "Everglades National Park",
-                            Type = "Natioinal"
+                            Type = "National"
                         });
                 });
 #pragma warning restore 612, 618
