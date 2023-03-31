@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ParksLookupApi.Models
 {
-  public class Parks
+  public class Park
   {
-    public int ParksId { get; set; }
+    public int ParkId { get; set; }
 
     [Required]
     [StringLength(20)]
