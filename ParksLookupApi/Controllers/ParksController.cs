@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ParksLookupApi.Models;
+using Newtonsoft.Json;
 
 namespace ParksLookupApi.Controllers
 {
@@ -106,6 +107,16 @@ namespace ParksLookupApi.Controllers
       await _db.SaveChangesAsync();
 
       return NoContent();
+    }
+
+    [HttpGet]
+    [Route("api/parks/random")]
+    public IActionResult GetRandomPark()
+    {
+      var random = new Random();
+      var parkCount = _db.Parks.Count();
+      var randomPark = _db.Parks.Skip(random.Next(0, parkCount)).FirstOrDefault();
+      return Ok(randomPark);
     }
   }
 }
