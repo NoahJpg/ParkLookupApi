@@ -6,7 +6,7 @@ namespace ParksLookupApi.Models
   {
     public DbSet<Park> Parks { get; set; }
 
-    public ParksLookupApiContext(DbContextOptions<ParksLookupApiContext> options = null) : base(options)
+    public ParksLookupApiContext(DbContextOptions<ParksLookupApiContext> options) : base(options)
     {
       
     }
