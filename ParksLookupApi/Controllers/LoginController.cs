@@ -9,7 +9,7 @@ using System.Text;
 
 namespace ParksLookupApi.Controllers
 {
-  [Route("api/[controlller]")]
+  [Route("api/[controller]")]
   [ApiController]
   public class LoginController : ControllerBase
   {
