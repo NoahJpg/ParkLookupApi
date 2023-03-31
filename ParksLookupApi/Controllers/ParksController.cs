@@ -109,8 +109,7 @@ namespace ParksLookupApi.Controllers
       return NoContent();
     }
 
-    [HttpGet]
-    [Route("api/parks/random")]
+    [HttpGet("random")]
     public IActionResult GetRandomPark()
     {
       var random = new Random();
