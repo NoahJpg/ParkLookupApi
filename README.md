@@ -9,19 +9,22 @@
     <a href="#technologies-used">Technologies Used</a> •
     <a href="#endpoints">Endpoints</a> •
     <a href="#setup-instructions">Setup Instructions</a> •
+    <a href="#further-exploration">Further Exploration</a> •
     <a href="#known-bugs">Known Bugs</a> •
     <a href="#license">License</a>
+
+    
   </p>
 
   <p align="center">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Cascade_Pass_and_Pelton_Basin.jpg" style="width: 20%;"/>
+    <img src="https://images.squarespace-cdn.com/content/v1/5bad2c26d74562245b63d094/1598723924252-TNNYGDKRYM53TUZYQYYH/artist+point+-+north+cascades+national+park+-+washington?format=1000w" style="width: 30%;"/>
   </p>
 
 ---
 
   ## Description
   
-  An API that lists Name, State, and Type of National and State Parks.
+  An API that returns Name, State, and Type of National and State Parks.
 
 
 ## Technologies Used
@@ -40,7 +43,7 @@
 #### Park Endpoints
 
 * _api/parks_
-* _api/parks{id}_
+* _api/parks/{id}_
 
 #### Authentication Endpoints
 
@@ -50,7 +53,7 @@
 * _api/user/adminsandsellers_
 
 
-### Setup Instructions
+## Setup Instructions
 
 #### You Will Need: 
 
@@ -102,6 +105,7 @@
 ## Further Exploration
 
 * _Token Based Authentication_
+* _This sets up a user authentication where they can create a password and be assigned a role that determines which endpoints they are able to access or not access_
 
 * _In order to generate and check a unique user token based on role, do the following:_
 
