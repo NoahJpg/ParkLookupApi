@@ -1,6 +1,47 @@
+using System.Security.Claims;
+using CretaceousApi.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
 namespace ParksLookupApi.Controllers
 {
-  public class UserLogin
+  [Route("api/[controller]")]
+  [ApiController]
+  public class UserController : ControllerBase
   {
+    [HttpGet("Admins")]
+    [Authorize]
+    public IActionResult AdminsEndpoint()
+    {
+      var currentUser = GetCurrentUser();
+
+      return Ok($"Hi {currentUser.GivenName}, you are an {currentUser.Role}");
+    }
+
+    [HttpGet("Public")]
+    public IActionResult Public()
+    {
+      return Ok("Hi, you're on public property");
+    }
+
+    private UserModel GetCurrentUser()
+    {
+      var identity = HttpContext.User.Identity as ClaimsIdentity;
+
+      if (identity != null)
+      {
+        var userClaims = identity.Claims;
+
+        return new UserModel
+        {
+          Username = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
+          EmailAddress = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
+          GivenName = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.GivenName)?.Value,
+          Surname = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value,
+          Role = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Role)?.Value
+        };
+      }
+      return null;
+    }
   }
 }

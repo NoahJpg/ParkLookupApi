@@ -1,9 +1,11 @@
-using System.Text;
-using ParksLookupApi.Models;
+using CretaceousApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
+using System.Text;
+
 
 namespace ParksLookupApi.Controllers
 {
@@ -24,7 +26,7 @@ namespace ParksLookupApi.Controllers
     [HttpPost]
     public IActionResult Login([FromBody] UserLogin userLogin)
     {
-      var user = Authenticated(userLogin);
+      var user = Authenticate(userLogin);
 
       if (user != null)
       {
@@ -38,7 +40,7 @@ namespace ParksLookupApi.Controllers
     private string Generate(UserModel user)
     {
       var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
-      var credentials = new SigningCredtials(securityKey, SecurityAlgorightms.HmacSha256);
+      var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
       var claims = new []
       {
@@ -48,6 +50,26 @@ namespace ParksLookupApi.Controllers
         new Claim(ClaimTypes.Surname, user.Surname),
         new Claim(ClaimTypes.Role, user.Role)
       };
+
+      var token = new JwtSecurityToken(_config["Jwt:Issuer"],
+      _config["Jwt:Audience"],
+      claims,
+      expires: DateTime.Now.AddMinutes(30),
+      signingCredentials: credentials);
+
+    return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+
+    private UserModel Authenticate(UserLogin userLogin)
+    {
+      var currentUser = UserConstants.Users.FirstOrDefault(o => o.Username.ToLower() == userLogin.Username.ToLower() && o.Password == userLogin.Password);
+
+      if (currentUser != null)
+      {
+        return currentUser;
+      }
+
+      return null;
     }
   }
 }
