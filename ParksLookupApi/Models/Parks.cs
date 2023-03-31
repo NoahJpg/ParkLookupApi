@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ParksLookupApi.Models;
+namespace ParksLookupApi.Models
 {
   public class Parks
   {
