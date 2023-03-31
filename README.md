@@ -1,6 +1,21 @@
-# Parks Lookup API
+  # Parks Lookup API
+  ### By: Noah Atkinson
 
-#### By: Noah Atkinson
+  ## Table of Contents
+- [Parks Lookup API](#parks-lookup-api)
+      - [By: Noah Atkinson](#by-noah-atkinson)
+  - [Technologies Used](#technologies-used)
+  - [Description](#description)
+    - [Setup Instructions](#setup-instructions)
+      - [You Will Need:](#you-will-need)
+      - [Preliminary Project Set-up:](#preliminary-project-set-up)
+  - [Endpoints](#endpoints)
+      - [Park Endpoints](#park-endpoints)
+      - [Authentication Endpoints](#authentication-endpoints)
+  - [Further Exploration](#further-exploration)
+  - [Known Bugs](#known-bugs)
+  - [License](#license)
+
 
 ## Technologies Used
 
@@ -14,7 +29,7 @@
 * Entity Framework Core 6
 
 ## Description
-An API that lists Name, State, and Type of State and National parks
+An API that lists Name, State, and Type of National and State Parks. 
 
 ### Setup Instructions
 
@@ -64,12 +79,14 @@ An API that lists Name, State, and Type of State and National parks
 10. Run `dotnet watch run` in the command line to start the project in development mode with a watcher.
 11. Open the browser to _https://localhost:5001_. If you cannot access localhost:5001 it is likely because you have not configured a .NET developer security certificate for HTTPS. To learn about this, review this lesson: [Redirecting to HTTPS and Issuing a Security Certificate](https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/redirecting-to-https-and-issuing-a-security-certificate).
 
-## Park Endpoints
+## Endpoints
+
+#### Park Endpoints
 
 * _api/parks_
 * _api/parks{id}_
 
-## Authentication Endpoints
+#### Authentication Endpoints
 
 * _api/login_
 * _api/user/admins_
@@ -87,19 +104,22 @@ An API that lists Name, State, and Type of State and National parks
 3. Create a 'Post' request on Postman at this path: _https://localhost:5001/api/login_ 
 using this information in the 'body' set to 'raw' and format type 'JSON':
 
-```{"Username": "jason_admin", "Password": "MyPass_w0rd"}```
-If you want to create a token for the seller, not admin, use this instead:
-```{"Username": "elyse_seller", "Password": "MyPass_w0rd"}```
-These come from the `UserConstants.cs` file.
+* ```{"Username": "jason_admin", "Password": "MyPass_w0rd"}```
+* If you want to create a token for the seller, not admin, use this instead:
+* ```{"Username": "elyse_seller", "Password": "MyPass_w0rd"}```
+* These are setup in the `UserConstants.cs` file.
 
 4. Send the request and copy the long token it generates
-5. Create a new 'Get' requestn on Postman one of the following paths accordingly:
+5. Create a new 'Get' request on Postman one of the following paths accordingly:
 
 * _https://localhost:5001/api/user/admins_
 * _https://localhost:5001/api/user/sellers_
 * _https://localhost:5001/api/adminsandsellers_
 
-6.
+6. Select 'Authorization' and in 'Type' choose 'Bearer Token' from the drop down
+7. Paste the token in the 'Token' field and send the request
+8. If working, it will return: ```Hi Jason, you are an Administrator```
+* or if you are testing the seller, it will return ```Hi Elyse, you are a Seller```
 
 
 ## Known Bugs
