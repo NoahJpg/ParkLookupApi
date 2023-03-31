@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ParksLookupApi.Models;
-using System.Threading.Tasks;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace ParksLookupApi.Controllers
 {
