@@ -24,7 +24,7 @@ namespace ParksLookupApi.Controllers
     {
       var currentUser = GetCurrentUser();
 
-      return Ok($"Hi {currentUser.GivenName}, you are a {currentUser.Role}");
+      return Ok($"Hi {currentUser.GivenName}, you are a(n) {currentUser.Role}");
     }
 
     [HttpGet("AdminsAndSellers")]

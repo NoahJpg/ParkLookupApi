@@ -53,20 +53,53 @@ An API that lists Name, State, and Type of State and National parks
 
 **IMPORTANT:** Be sure to replace your username, password, and name of your database for the fields [YOUR-USER-HERE], [YOUR-PASSWORD-HERE], AND [YOUR-DB-NAME].
 
-4. Create a .gitignore file and add "appsettings.json", "appsettings.*.json", "bin", and "obj" to the ignored file list.  
-5. Open your shell (e.g., Terminal or GitBash) and add your .gitignore file and commit it before adding any other files. 
-6. Navigate to this project's production directory called "ParksLookupApi". 
-7. In the command line, run these commands in order
+5. Create a .gitignore file and add "appsettings.json", "appsettings.*.json", "bin", and "obj" to the ignored file list.  
+6. Open your shell (e.g., Terminal or GitBash) and add your .gitignore file and commit it before adding any other files. 
+7. Navigate to this project's production directory called "ParksLookupApi". 
+8. In the command line, run these commands in order
  * `$ dotnet tool install --global dotnet-ef --version 6.0.0` 
  * `$ dotnet ef database update` (Run this command anytime changes are made to the database)
  
-8. Then, run the command `dotnet run` to compile and execute the console application. Optionally, you can run `dotnet build` to compile this console app without running it.
-9. Run `dotnet watch run` in the command line to start the project in development mode with a watcher.
-10. Open the browser to _https://localhost:5001_. If you cannot access localhost:5001 it is likely because you have not configured a .NET developer security certificate for HTTPS. To learn about this, review this lesson: [Redirecting to HTTPS and Issuing a Security Certificate](https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/redirecting-to-https-and-issuing-a-security-certificate).
+9. Then, run the command `dotnet run` to compile and execute the console application. Optionally, you can run `dotnet build` to compile this console app without running it.
+10. Run `dotnet watch run` in the command line to start the project in development mode with a watcher.
+11. Open the browser to _https://localhost:5001_. If you cannot access localhost:5001 it is likely because you have not configured a .NET developer security certificate for HTTPS. To learn about this, review this lesson: [Redirecting to HTTPS and Issuing a Security Certificate](https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/redirecting-to-https-and-issuing-a-security-certificate).
+
+## Park Endpoints
+
+* _api/parks_
+* _api/parks{id}_
+
+## Authentication Endpoints
+
+* _api/login_
+* _api/user/admins_
+* _api/user/sellers_
+* _api/user/adminsandsellers_
 
 ## Further Exploration
 
 * _Token Based Authentication_
+
+* _In order to generate and check a unique user token based on role, do the following:_
+
+1. Open or download [Postman](https://www.postman.com/downloads/)
+2. Start the server in the project using `dotnet run`
+3. Create a 'Post' request on Postman at this path: _https://localhost:5001/api/login_ 
+using this information in the 'body' set to 'raw' and format type 'JSON':
+
+```{"Username": "jason_admin", "Password": "MyPass_w0rd"}```
+If you want to create a token for the seller, not admin, use this instead:
+```{"Username": "elyse_seller", "Password": "MyPass_w0rd"}```
+These come from the `UserConstants.cs` file.
+
+4. Send the request and copy the long token it generates
+5. Create a new 'Get' requestn on Postman one of the following paths accordingly:
+
+* _https://localhost:5001/api/user/admins_
+* _https://localhost:5001/api/user/sellers_
+* _https://localhost:5001/api/adminsandsellers_
+
+6.
 
 
 ## Known Bugs
