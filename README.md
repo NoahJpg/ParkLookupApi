@@ -1,20 +1,27 @@
-  # Parks Lookup API
-  ### By: Noah Atkinson
+<h1 align="center">Parks Lookup API</h1>
+  <p align="center">
+    <img src="https://img.shields.io/badge/License-MIT-blue.svg" />
+    <img src="https://img.shields.io/badge/Version-1.0.0-blue.svg" />
+  </p>
+  
+  <p align="center">
+    <a href="#description">Description</a> •
+    <a href="#technologies-used">Technologies Used</a> •
+    <a href="#endpoints">Endpoints</a> •
+    <a href="#setup-instructions">Setup Instructions</a> •
+    <a href="#known-bugs">Known Bugs</a> •
+    <a href="#license">License</a>
+  </p>
 
-  ## Table of Contents
-- [Parks Lookup API](#parks-lookup-api)
-      - [By: Noah Atkinson](#by-noah-atkinson)
-  - [Technologies Used](#technologies-used)
-  - [Description](#description)
-    - [Setup Instructions](#setup-instructions)
-      - [You Will Need:](#you-will-need)
-      - [Preliminary Project Set-up:](#preliminary-project-set-up)
-  - [Endpoints](#endpoints)
-      - [Park Endpoints](#park-endpoints)
-      - [Authentication Endpoints](#authentication-endpoints)
-  - [Further Exploration](#further-exploration)
-  - [Known Bugs](#known-bugs)
-  - [License](#license)
+  <p align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Cascade_Pass_and_Pelton_Basin.jpg" style="width: 20%;"/>
+  </p>
+
+---
+
+  ## Description
+  
+  An API that lists Name, State, and Type of National and State Parks.
 
 
 ## Technologies Used
@@ -28,8 +35,20 @@
 * MySQL
 * Entity Framework Core 6
 
-## Description
-An API that lists Name, State, and Type of National and State Parks. 
+## Endpoints
+
+#### Park Endpoints
+
+* _api/parks_
+* _api/parks{id}_
+
+#### Authentication Endpoints
+
+* _api/login_
+* _api/user/admins_
+* _api/user/sellers_
+* _api/user/adminsandsellers_
+
 
 ### Setup Instructions
 
@@ -79,19 +98,6 @@ An API that lists Name, State, and Type of National and State Parks.
 10. Run `dotnet watch run` in the command line to start the project in development mode with a watcher.
 11. Open the browser to _https://localhost:5001_. If you cannot access localhost:5001 it is likely because you have not configured a .NET developer security certificate for HTTPS. To learn about this, review this lesson: [Redirecting to HTTPS and Issuing a Security Certificate](https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/redirecting-to-https-and-issuing-a-security-certificate).
 
-## Endpoints
-
-#### Park Endpoints
-
-* _api/parks_
-* _api/parks{id}_
-
-#### Authentication Endpoints
-
-* _api/login_
-* _api/user/admins_
-* _api/user/sellers_
-* _api/user/adminsandsellers_
 
 ## Further Exploration
 
